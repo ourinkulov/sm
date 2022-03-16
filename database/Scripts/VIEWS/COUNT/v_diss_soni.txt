@@ -1,0 +1,17 @@
+CREATE VIEW v_diss_soni AS
+SELECT
+u.id as user_id,
+u.name,
+u.kafid,
+k.kafName,
+COUNT(d.id) as soni
+FROM
+v_dissertats d 
+LEFT JOIN users u ON u.id=d.user_id
+LEFT JOIN kafedras k on u.kafid=k.id
+GROUP BY 
+u.id,
+u.name,
+u.kafid,
+k.kafName
+ORDER BY soni desc

@@ -1,0 +1,18 @@
+create VIEW v_kurs as
+SELECT
+k.id,
+k.user_id,
+u.name,
+k.turi as kt_id,
+kt.turi,
+k.nomi,
+k.sana as sid,
+s.year,
+k.ball,
+k.ilova,
+k.status
+FROM
+kurs k
+LEFT JOIN kurs_turi kt on k.turi=kt.id
+LEFT JOIN users u on k.user_id=u.id
+LEFT JOIN study_year s on k.sana=s.id

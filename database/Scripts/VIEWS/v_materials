@@ -1,0 +1,18 @@
+CREATE VIEW v_materials as
+select
+m.id,
+m.user_id,
+u.name,
+m.turi as mtid,
+mt.turi,
+m.nomi,
+m.taboq,
+m.muallif,
+m.sana,
+m.ball,
+m.status,
+m.ilova,
+m.created_at
+FROM materials m
+LEFT JOIN material_turi mt on m.turi=mt.id
+left JOIN users u on u.id=m.user_id

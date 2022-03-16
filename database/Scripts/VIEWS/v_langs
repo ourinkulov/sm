@@ -1,0 +1,20 @@
+create VIEW v_langs AS
+SELECT
+l.id,
+l.user_id,
+u.name,
+l.langname_id,
+ln.lang_name,
+l.langtype_id,
+lt.lang_type,
+l.ball,
+l.status,
+l.ilova,
+l.bsana,
+l.ysana,
+l.created_at
+FROM
+langs l
+LEFT JOIN lang_name ln on l.langname_id=ln.id
+LEFT JOIN lang_type lt on l.langtype_id=lt.id
+LEFT JOIN users u on l.user_id=u.id

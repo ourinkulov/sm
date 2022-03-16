@@ -1,0 +1,21 @@
+create VIEW v_dissertats AS
+SELECT
+d.id,
+d.user_id,
+u.name,
+d.mavzu,
+d.maqomi as diss_maqomi_id,
+dm.maqomi,
+d.shifr,
+d.nomi,
+d.fan,
+d.tsana,
+d.ysana,
+d.dalolatnoma,
+d.ball,
+d.status,
+d.created_at
+FROM
+dissertats d
+LEFT JOIN diss_maqomi dm on d.maqomi=dm.id
+LEFT JOIN users u on u.id=d.user_id

@@ -1,0 +1,16 @@
+create view v_maqola_count
+as
+SELECT
+u.id,
+u.name,
+u.kafid, 
+k.kafname,
+COUNT(m.id)
+FROM
+v_maqolas m 
+LEFT JOIN users u on u.id=m.user_id
+LEFT JOIN kafedras k on u.kafid=k.id
+where m.status=1
+GROUP by u.id, u.name,u.kafid,k.kafname
+order by m.id desc
+

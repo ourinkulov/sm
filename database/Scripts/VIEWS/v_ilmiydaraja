@@ -1,0 +1,14 @@
+create VIEW v_ilmiydaraja AS
+SELECT
+id.id,
+id.user_id,
+u.name,
+i.ilmiydaraja,
+id.ilmiyDarajalova,
+id.creator,
+id.status,
+id.created_at
+FROM
+ilmiy_darajas id
+LEFT JOIN users u on id.user_id=u.id
+LEFT JOIN ilmiyd i on i.id=id.ilmiyDaraja

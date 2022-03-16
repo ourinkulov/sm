@@ -1,0 +1,34 @@
+create VIEW v_userprofile AS
+SELECT
+u.id,
+u.kafid,
+k.kafName,
+u.lavozimid,
+l.lavozim,
+u.name,
+u.email,
+u.role,
+p.id aspid,
+p.born,
+p.malumot,
+p.mutaxassislik,
+p.iioq,
+p.ait,
+p.pit,
+i.id as iid,
+i.iu,
+i.iui,
+id.id as ilmiydaraja_id,
+id.ilmiyDaraja,
+id.ilmiyDarajalova,
+r.id as rid,
+r.profileimage
+FROM
+users u
+LEFT JOIN userprofiles p on u.id=p.user_id
+LEFT JOIN ilmprofiles i on u.id=i.user_id
+LEFT JOIN ilmiy_darajas id on u.id=id.user_id
+LEFT JOIN userimages r on u.id=r.user_id
+LEFT JOIN kafedras k on u.kafid=k.id
+LEFT JOIN lavozims l on l.id=u.lavozimid
+

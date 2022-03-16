@@ -1,0 +1,14 @@
+create VIEW v_ilmiyunvo AS
+SELECT
+iu.id,
+iu.user_id,
+u.name,
+i.name as ilmiyunvon,
+iu.iui,
+iu.status,
+iu.ball,
+iu.created_at
+FROM
+ilmprofiles iu
+LEFT JOIN users u on iu.user_id=u.id
+LEFT JOIN ilmiy i on i.id=iu.iu

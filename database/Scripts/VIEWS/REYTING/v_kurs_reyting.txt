@@ -1,0 +1,12 @@
+CREATE VIEW v_kurs_reyting
+AS
+SELECT
+u.id,
+u.name,
+u.kafid,
+SUM(k.ball) as ball
+FROM
+v_teachers u 
+LEFT JOIN kurs k on u.id=k.user_id
+GROUP by u.id, u.name, u.kafid
+ORDER BY ball DESC

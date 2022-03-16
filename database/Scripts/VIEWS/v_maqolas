@@ -1,0 +1,20 @@
+create VIEW v_maqolas as
+select
+m.id,
+m.user_id,
+u.name,
+u.kafid,
+mt.id as maqola_turi_id,
+mt.turi,
+mm.id as maqola_miqyosi_id,
+mm.miqyosi,
+m.mavzu,
+m.mualliflik,
+m.ilova,
+m.ball,
+m.status
+FROM
+maqolas m
+LEFT JOIN maqola_turi mt on m.turi=mt.id
+LEFT JOIN maqola_miqyosi mm on m.miqyosi=mm.id
+LEFT JOIN users u on u.id=m.user_id

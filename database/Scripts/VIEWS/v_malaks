@@ -1,0 +1,20 @@
+create VIEW v_malaks AS
+SELECT
+m.id,
+m.user_id,
+u.name,
+m.turi as mid,
+mt.turi,
+m.sana as sid,
+s.year,
+m.mavzu,
+m.kun,
+m.ball,
+m.status,
+m.ilova,
+m.created_at
+FROM
+malakas m
+LEFT JOIN malaka_turi mt on m.turi=mt.id
+LEFT JOIN users u on u.id=m.user_id
+LEFT JOIN study_year s on m.sana=s.id

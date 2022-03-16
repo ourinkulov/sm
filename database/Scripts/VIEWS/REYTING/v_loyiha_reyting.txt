@@ -1,0 +1,12 @@
+CREATE VIEW v_loyiha_reyting
+AS
+SELECT
+u.id,
+u.name,
+u.kafid,
+SUM(l.ball) as ball
+FROM
+v_teachers u 
+LEFT JOIN loyihas l on u.id=l.user_id
+GROUP by u.id, u.name, u.kafid
+ORDER BY ball DESC

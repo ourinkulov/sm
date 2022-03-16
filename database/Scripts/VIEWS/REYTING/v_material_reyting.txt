@@ -1,0 +1,12 @@
+CREATE VIEW v_material_reyting
+AS
+SELECT
+u.id,
+u.name,
+u.kafid,
+SUM(m.ball) as ball
+FROM
+v_teachers u 
+LEFT JOIN materials m on u.id=m.user_id
+GROUP by u.id, u.name, u.kafid
+ORDER BY ball DESC

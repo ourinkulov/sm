@@ -1,0 +1,18 @@
+CREATE VIEW v_patent_soni AS
+SELECT
+u.id as user_id,
+u.name,
+u.kafid,
+k.kafName,
+COUNT(p.id) as soni
+FROM
+v_patents p 
+LEFT JOIN users u ON u.id=p.user_id
+LEFT JOIN kafedras k on u.kafid=k.id
+where p.status=1
+GROUP BY 
+u.id,
+u.name,
+u.kafid,
+k.kafName
+ORDER BY soni desc

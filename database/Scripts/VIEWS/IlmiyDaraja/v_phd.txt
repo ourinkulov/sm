@@ -1,0 +1,29 @@
+create VIEW v_phd AS
+SELECT
+u.id,
+u.name,
+u.kafid,
+k.kafName,
+u.lavozimid,
+l.lavozim,
+p.id as profile_id,
+p.iioq,
+p.ait,
+p.pit,
+id.id as ilmiy_daraja_id,
+ilmiyd.ilmiydaraja as ilmiy_daraja,
+id.ilmiyDarajalova,
+ip.id as ilmiy_unvon_id,
+ilmiy.name as ilmiy_unvon,
+img.profileimage
+FROM
+users u 
+LEFT JOIN kafedras k on u.kafid=k.id
+LEFT JOIN lavozims l on u.lavozimid=l.id
+LEFT JOIN userprofiles p on p.user_id=u.id
+LEFT JOIN ilmiy_darajas id on u.id=id.user_id
+LEFT JOIN ilmiyd ilmiyd on id.ilmiyDaraja=ilmiyd.id 
+LEFT JOIN ilmprofiles ip on ip.user_id=u.id
+LEFT JOIN ilmiy ilmiy on ip.iu=ilmiy.id
+LEFT JOIN userimages img on u.id=img.user_id
+WHERE u.role=2 and id.ilmiyDaraja=1

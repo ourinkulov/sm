@@ -1,0 +1,19 @@
+create VIEW v_patents AS
+SELECT
+p.id,
+p.user_id,
+u.name,
+p.miqyosi as pm_id,
+pt.miqyosi,
+p.nomi,
+p.raqami,
+p.sana,
+p.muallif,
+p.ilova,
+p.ball,
+p.status,
+p.created_at
+FROM
+patents p
+LEFT JOIN users u on u.id=p.user_id
+LEFT JOIN patent_turi pt on p.miqyosi=pt.id

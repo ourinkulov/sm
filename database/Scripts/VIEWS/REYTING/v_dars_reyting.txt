@@ -1,0 +1,12 @@
+CREATE VIEW v_dars_reyting
+AS
+SELECT
+u.id,
+u.name,
+u.kafid,
+SUM(d.ball) as ball
+FROM
+v_teachers u 
+LEFT JOIN dars d on u.id=d.user_id
+GROUP by u.id, u.name, u.kafid
+ORDER BY ball DESC

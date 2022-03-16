@@ -1,0 +1,39 @@
+CREATE VIEW v_teachers_reyting AS
+SELECT
+u.id,
+u.kafid,
+u.name,
+(IFNULL((dr.ball),0)+IFNULL((darsr.ball),0)+IFNULL((kurs.ball),0)+IFNULL((lang.ball),0)+IFNULL((loyiha.ball),0)+IFNULL((malaka.ball),0)+IFNULL((maqola.ball),0)+IFNULL((material.ball),0)+IFNULL((patent.ball),0)) as ball
+FROM
+v_teachers u 
+LEFT JOIN v_diss_reyting dr on u.id=dr.id
+LEFT JOIN v_dars_reyting darsr on darsr.id=u.id
+LEFT JOIN v_kurs_reyting kurs on kurs.id=u.id
+LEFT JOIN v_lang_reyting lang on lang.id=u.id
+LEFT JOIN v_loyiha_reyting loyiha on loyiha.id=u.id
+LEFT JOIN v_malaka_reyting malaka on malaka.id=u.id
+LEFT JOIN v_maqola_reyting maqola on maqola.id=u.id
+LEFT JOIN v_material_reyting material on material.id=u.id
+LEFT JOIN v_patent_reyting patent on patent.id=u.id
+GROUP BY u.id,u.kafid,u.name
+ORDER BY ball DESC
+
+
+
+Error Code: 1055. Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'monitoring_new.dr.ball' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+
+
+LEFT JOIN `v_dars_reyting` `darsr` ON ((`darsr`.`id` = `u`.`id`)))
+        LEFT JOIN `v_kurs_reyting` `kurs` ON ((`kurs`.`id` = `u`.`id`)))
+        LEFT JOIN `v_lang_reyting` `lang` ON ((`lang`.`id` = `u`.`id`)))
+        LEFT JOIN `v_loyiha_reyting` `loyiha` ON ((`loyiha`.`id` = `u`.`id`)))
+        LEFT JOIN `v_malaka_reyting` `malaka` ON ((`malaka`.`id` = `u`.`id`)))
+        LEFT JOIN `v_maqola_reyting` `maqola` ON ((`maqola`.`id` = `u`.`id`)))
+        LEFT JOIN `v_material_reyting` `material` ON ((`material`.`id` = `u`.`id`)))
+        LEFT JOIN `v_patent_reyting` `patent` ON ((`patent`.`id` = `u`.`id`)))
+
+
+
+, `darsr`.`ball` , `kurs`.`ball` , `lang`.`ball` , `loyiha`.`ball` , `malaka`.`ball` , `maqola`.`ball` , `material`.`ball` , `patent`.`ball`
+
++ IFNULL(`darsr`.`ball`, 0)) + IFNULL(`kurs`.`ball`, 0)) + IFNULL(`lang`.`ball`, 0)) + IFNULL(`loyiha`.`ball`, 0)) + IFNULL(`malaka`.`ball`, 0)) + IFNULL(`maqola`.`ball`, 0)) + IFNULL(`material`.`ball`, 0)) + IFNULL(`patent`.`ball`, 0)

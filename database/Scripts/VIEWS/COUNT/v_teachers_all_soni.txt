@@ -1,0 +1,31 @@
+CREATE VIEW v_teachers_all_soni AS
+SELECT
+u.id,
+u.name,
+u.kafid,
+IFNULL((maqola.maqola_soni),0) as maqola_soni,
+IFNULL((d.dars_soni),0) as dars_soni,
+IFNULL((ds.soni),0) as diss_soni,
+IFNULL((ms.soni),0) as mater_soni,
+IFNULL((p.soni),0) as patent_soni,
+IFNULL((k.soni),0) as kurs_soni,
+IFNULL((l.soni),0) as loyiha_soni,
+IFNULL((lang.soni),0) as lang_soni,
+IFNULL((malaka.soni),0) as malaka_soni
+FROM
+v_teachers u 
+LEFT JOIN v_maqola_count maqola on maqola.id=u.id 
+LEFT JOIN v_dars_soni d on d.id=u.id
+LEFT JOIN v_diss_soni ds on ds.user_id=u.id
+LEFT JOIN v_materialsoni ms on ms.user_id=u.id
+LEFT JOIN v_patent_soni p on p.user_id=u.id
+LEFT JOIN v_kurs_soni k on k.user_id=u.id
+LEFT JOIN v_loyiha_soni l on l.user_id=u.id
+LEFT JOIN v_lang_soni lang on lang.user_id=u.id
+LEFT JOIN v_malaka_soni malaka on malaka.user_id=u.id
+LEFT JOIN kafedras kaf on kaf.id=u.kafid
+GROUP BY 
+u.id,
+u.name
+
+ORDER BY u.id

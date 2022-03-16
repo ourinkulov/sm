@@ -1,0 +1,25 @@
+create VIEW v_dars AS
+select
+d.id,
+d.user_id,
+d.kid,
+d.subject_id,
+d.tipurok_id,
+u.name,
+k.kafName,
+s.fannomi,
+t.type,
+d.mavzu,
+d.guruh,
+d.sana,
+d.ilova,
+d.ball,
+d.statusurok_id
+from 
+dars d
+left JOIN subjects s on d.subject_id=s.id
+left JOIN tipuroks t on d.tipurok_id=t.id
+left JOIN users u on d.user_id=u.id
+left JOIN kafedras k on u.kafid=k.id
+where u.role=2
+ORDER by d.id DESC

@@ -1,0 +1,18 @@
+create view v_malaka_soni as
+SELECT
+u.id as user_id,
+u.name,
+u.kafid,
+k.kafName,
+COUNT(m.id) as soni
+FROM
+v_malaks m 
+LEFT JOIN users u ON u.id=m.user_id
+LEFT JOIN kafedras k on u.kafid=k.id
+where m.status=1
+GROUP BY 
+u.id,
+u.name,
+u.kafid,
+k.kafName
+ORDER BY soni desc

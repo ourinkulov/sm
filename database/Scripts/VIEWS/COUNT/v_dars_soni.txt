@@ -1,0 +1,15 @@
+CREATE VIEW v_dars_soni AS
+SELECT
+u.id,
+u.name,
+u.kafid, 
+k.kafname,
+COUNT(d.id) as dars_soni
+FROM
+v_dars d
+LEFT JOIN users u on u.id=d.user_id
+LEFT JOIN kafedras k on u.kafid=k.id
+where d.statusurok_id=2
+GROUP by u.id, u.name,u.kafid,k.kafname
+order by d.id desc
+

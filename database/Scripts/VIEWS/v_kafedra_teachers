@@ -1,0 +1,17 @@
+create view v_kafedra_teachers AS
+SELECT
+u.id,
+u.name,
+k.kafName,
+u.kafid,
+l.lavozim,
+u.lavozimid,
+u.email,
+u.role,
+u.creatorname,
+u.creatorid,
+u.created_at
+FROM
+users u
+LEFT JOIN kafedras k on u.kafid=k.id
+LEFT JOIN lavozims l on u.lavozimid=l.id

@@ -1,0 +1,18 @@
+CREATE VIEW v_lang_soni AS
+SELECT
+u.id as user_id,
+u.name,
+u.kafid,
+k.kafName,
+COUNT(l.id) as soni
+FROM
+v_langs l 
+LEFT JOIN users u ON u.id=l.user_id
+LEFT JOIN kafedras k on u.kafid=k.id
+where l.status=1
+GROUP BY 
+u.id,
+u.name,
+u.kafid,
+k.kafName
+ORDER BY soni desc

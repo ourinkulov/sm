@@ -1,0 +1,17 @@
+CREATE VIEW v_kafedra_role
+AS
+SELECT
+*
+FROM
+users WHERE role=3
+
+
+
+
+
+
+
+
+
+
+Kafedra rolini bajaruvchi profillar

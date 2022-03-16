@@ -1,0 +1,4 @@
+create view v_subjectToKafedra AS
+SELECT s.id,
+s.kafedra_id,
+s.fannomi, k.kafName FROM `subjects` s left JOIN kafedras k on s.kafedra_id=k.id

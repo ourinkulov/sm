@@ -1,0 +1,18 @@
+CREATE VIEW v_kurs_soni AS
+SELECT
+u.id as user_id,
+u.name,
+u.kafid,
+k.kafName,
+COUNT(ku.id) as soni
+FROM
+v_kurs ku 
+LEFT JOIN users u ON u.id=ku.user_id
+LEFT JOIN kafedras k on u.kafid=k.id
+where ku.status=1
+GROUP BY 
+u.id,
+u.name,
+u.kafid,
+k.kafName
+ORDER BY soni desc

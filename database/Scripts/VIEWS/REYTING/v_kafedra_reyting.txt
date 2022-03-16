@@ -1,0 +1,9 @@
+CREATE VIEW v_kafedra_reyting AS
+SELECT 
+k.id, 
+k.kafName, 
+SUM(tr.ball) as ball 
+FROM v_teachers_reyting tr 
+LEFT JOIN kafedras k on k.id=tr.kafid 
+GROUP BY k.id,k.kafName 
+ORDER BY ball DESC;
